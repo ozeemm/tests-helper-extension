@@ -21,7 +21,7 @@ function getSelectedText() {
         return
 
     const answersMax = 3
-    const answers = []
+    const outputs = []
     let answersCount = 0
 
     const jsonUrl = chrome.runtime.getURL("data.json")
@@ -29,7 +29,7 @@ function getSelectedText() {
     fetch(jsonUrl).then(r => r.json()).then(json => {
         for(var key of Object.keys(json)){
             if(key.toLowerCase().includes(selectedText.toLowerCase())){
-                answers.push(json[key])
+                outputs.push({ question: key, answer: json[key]})
                 answersCount++
                 if(answersCount == answersMax)
                   break
@@ -38,8 +38,9 @@ function getSelectedText() {
 
         if(answersCount > 0){
             let msg = ""
-            answers.forEach((answer, i) => {
-              msg += `${i+1}. ${answer}\n`
+            outputs.forEach((out, i) => {
+              msg += `${i+1}. Вопрос: ${out.question}\n`
+              msg += `- Ответ: ${out.answer}\n`
 
             })
             alert(msg)
