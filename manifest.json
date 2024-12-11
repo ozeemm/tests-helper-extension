@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "UP",
-    "description": "Base Level Extension",
+    "description": "Таинственный волшебник✨✨",
     "version": "1.0",
     "action": {
       "default_popup": "popup.html",

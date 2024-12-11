@@ -20,19 +20,30 @@ function getSelectedText() {
     if (!selectedText)
         return
 
+    const answersMax = 3
+    const answers = []
+    let answersCount = 0
+
     const jsonUrl = chrome.runtime.getURL("data.json")
     
     fetch(jsonUrl).then(r => r.json()).then(json => {
-        let answer = null
         for(var key of Object.keys(json)){
             if(key.toLowerCase().includes(selectedText.toLowerCase())){
-                answer = json[key]
-                break
+                answers.push(json[key])
+                answersCount++
+                if(answersCount == answersMax)
+                  break
             }
         }
 
-        if(answer)
-            alert(answer)
+        if(answersCount > 0){
+            let msg = ""
+            answers.forEach((answer, i) => {
+              msg += `${i+1}. ${answer}\n`
+
+            })
+            alert(msg)
+        }
         else
             alert("Not found!")
    })  
