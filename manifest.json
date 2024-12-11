@@ -4,7 +4,24 @@
     "description": "Base Level Extension",
     "version": "1.0",
     "action": {
-      "default_popup": "index.html",
+      "default_popup": "popup.html",
       "default_icon": "icon.png"
-    }
-  }
+    },
+    "permissions": [
+        "contextMenus",
+        "activeTab",
+        "scripting"
+    ],
+    "icons":{
+        "16": "icon.png"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [ "data.json" ],
+            "matches": ["<all_urls>"]
+        }
+    ]
+}
