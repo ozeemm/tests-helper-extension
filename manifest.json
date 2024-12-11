@@ -1,11 +1,11 @@
 {
     "manifest_version": 3,
     "name": "UP",
-    "description": "Таинственный волшебник✨✨",
+    "description": "Тайная разработка Мистериона ради спасения простых смертных",
     "version": "1.0",
     "action": {
       "default_popup": "popup.html",
-      "default_icon": "icon.png"
+      "default_icon": "images/icon.png"
     },
     "permissions": [
         "contextMenus",
@@ -13,7 +13,8 @@
         "scripting"
     ],
     "icons":{
-        "16": "icon.png"
+        "16": "images/icon.png",
+        "128": "images/icon.png"
     },
     "background": {
         "service_worker": "background.js"
